@@ -2,7 +2,7 @@ DataStructures : An Open Implementation of all the popular datastructures
 =========================================================================
 
     #) TO-DO:
-    - [ ] Add STACK.
+    - [x] Add STACK.
     - [ ] Add iterator functionality.
     - [ ] Add QUEUE.
     - [ ] Add iterator functionality.
