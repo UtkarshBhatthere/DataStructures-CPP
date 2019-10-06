@@ -11,7 +11,7 @@
 template <typename T>
 class stack
 {
-    private:
+    protected:
         T*  stack_root;
         T*  top_ptr;
         int size;
@@ -24,7 +24,7 @@ class stack
             this -> capacity   = 0;
             this -> capacity   = required_capacity;
             this -> stack_root = new T[this->capacity];
-            this -> top_ptr    = this -> stack_root;
+            this -> top_ptr    = this -> stack_root - 1;
         }
 
         ~stack(void)
@@ -38,18 +38,24 @@ class stack
                 throw "Stack Full!";
                 return false;
             }
-            
-            *(this -> top_ptr++) = object;
-            
+        
+            this -> top_ptr++;
+            *(this -> top_ptr) = object;
+
             this -> size++;
             return true;
+        }
+
+        int print_size(void)
+        {
+            return this->size;
         }
 
         T pop(void)
         {
             if(this -> size == 0){
                 throw "Stack already empty!";
-                return NULL;
+                return (T)NULL;
             }
             T ret = *this -> top_ptr--;
             this -> size--;
@@ -74,29 +80,23 @@ class stack
 
         std::string flatten(void)
         {
-            std::cout << "Entered\n";
             T* object_ptr = this->top_ptr;
             std::stringstream stack_str;
             stack_str << "Stack Size : "<< this -> size<< std::endl;
             stack_str << "Stack Content : "<< std::endl;
-            std::cout << "Wrote something\n";
             try
             {
-                stack_str << *object_ptr-- << " indexed at -> " << this->size << std::endl;
-                std::cout << "Trying\n";
+                stack_str << "--> " << *object_ptr-- << " <-- TOP" << std::endl;
             }
             catch(const std::exception& e)
             {
-                std::cout << "Catching\n";
                 std::cerr << e.what() << '\n';
-                return e.what();
+                return e.what(); // TODO: Fix this, dwell more into exceptions.
             }
             int i = 1;
-            for (T* ptr = this->top_ptr - 1; ptr != this->stack_root; ptr--){
-                std::cout << "Flattening " << i++ << "\n";
-                stack_str << *object_ptr-- << " indexed at -> " << i << std::endl;
+            for (T* ptr = this->top_ptr - 1; ptr >= this->stack_root; ptr--){
+                stack_str << "--> " <<  *object_ptr-- << std::endl;
             }
-            std::cout << "returning\n";
             return stack_str.str();
         }
 
