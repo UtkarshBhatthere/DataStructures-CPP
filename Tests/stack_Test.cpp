@@ -9,10 +9,12 @@ int main(void)
     stack<int> stk1(10);
     stk1.push(10);
     stk1.push(40);
-    stk1.pop();
+    cout << stk1.pop() << endl;
+    cout << stk1.pop() << endl;
+    cout << stk1.top() << endl;
     stk1.push(12);
     stk1.push(45);
     stk1.push(78);
     stk1.push(34);
-    std::cout << stk1.flatten();
+    cout << stk1.flatten();
 }

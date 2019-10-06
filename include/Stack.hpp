@@ -35,7 +35,6 @@ class stack
         bool push(T object)
         {
             if(this->size == this->capacity){
-                throw "Stack Full!";
                 return false;
             }
         
@@ -54,7 +53,6 @@ class stack
         T pop(void)
         {
             if(this -> size == 0){
-                throw "Stack already empty!";
                 return (T)NULL;
             }
             T ret = *this -> top_ptr--;
@@ -64,6 +62,9 @@ class stack
 
         T top(void)
         {
+            if(this -> size == 0){
+                return (T)NULL;
+            }
             T ret = *this -> top_ptr;
             return ret;
         }
@@ -93,8 +94,8 @@ class stack
                 std::cerr << e.what() << '\n';
                 return e.what(); // TODO: Fix this, dwell more into exceptions.
             }
-            int i = 1;
-            for (T* ptr = this->top_ptr - 1; ptr >= this->stack_root; ptr--){
+            
+            while(object_ptr >= this->stack_root){
                 stack_str << "--> " <<  *object_ptr-- << std::endl;
             }
             return stack_str.str();
