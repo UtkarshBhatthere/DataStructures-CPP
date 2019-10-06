@@ -1,4 +1,7 @@
-a.exe
-a.out
 .vscode/
+
+#Built Files.
 Tests/*.exe
+Tests/*.out
+*.exe
+*.out
