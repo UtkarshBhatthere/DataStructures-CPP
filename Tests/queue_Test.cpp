@@ -11,7 +11,7 @@ int main(void)
     q.enqueue(40);
     cout <<  "1-" << q.flatten();
     q.dequeue();
-    // cout <<  "2-" << q.flatten();
+    cout <<  "2-" << q.flatten();
     q.dequeue();
     cout <<  "3-" << q.flatten();
     q.peek();

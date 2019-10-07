@@ -83,12 +83,12 @@ class queue
             return this -> size;
         }
 
-        std::string flatten(void)
+        std::string flatten(void)   // TODO: When dequeing to size 1 we are printng one extra char.
         {
             T* object_ptr = this -> front;
             std::stringstream queue_str;
-
-            queue_str << "Queue Size : " << this ->size << std::endl;
+            int size = this ->size;
+            queue_str << "Queue Size : " << size << std::endl;
             queue_str << "Queue Content : " << std::endl;
             if(this -> size == 0){
                 queue_str << "NULL" << std::endl;
@@ -105,7 +105,7 @@ class queue
                 return e.what();
             }
 
-            while(object_ptr != this->back - 1){    // Since back pointer stays one ahead.
+            while(object_ptr < this->back - 1){    // Since back pointer stays one ahead.
                 queue_str << "--> " << *object_ptr++ << std::endl;
             }
 
