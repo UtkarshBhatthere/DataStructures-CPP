@@ -87,8 +87,8 @@ class queue
         {
             T* object_ptr = this -> front;
             std::stringstream queue_str;
-            int size = this ->size;
-            queue_str << "Queue Size : " << size << std::endl;
+
+            queue_str << "Queue Size : " << this ->size << std::endl;
             queue_str << "Queue Content : " << std::endl;
             if(this -> size == 0){
                 queue_str << "NULL" << std::endl;
@@ -105,11 +105,12 @@ class queue
                 return e.what();
             }
 
-            while(object_ptr < this->back - 1){    // Since back pointer stays one ahead.
+            for (int i = 2; i < this-> size; i++){    // Since this is the secondth element to be printed.
                 queue_str << "--> " << *object_ptr++ << std::endl;
             }
 
-            queue_str << "--> " << *object_ptr << " <-- Back" << std::endl;
+            if(this -> size > 1)
+                queue_str << "--> " << *object_ptr << " <-- Back" << std::endl;
             
             return queue_str.str();
         }
