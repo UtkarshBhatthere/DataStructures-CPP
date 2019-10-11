@@ -9,7 +9,7 @@
 #include <iostream>
 
 template <typename T>
-class queueLL
+class queuell
 {
     struct QueueLL
     {
