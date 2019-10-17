@@ -6,7 +6,7 @@ using namespace std;
 
 int main(void)
 {
-    queueLL<int> q(10);
+    queuell<int> q(10);
     q.enqueue(10);
     q.enqueue(40);
     cout <<  "1-" << q.flatten();

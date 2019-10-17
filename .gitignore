@@ -3,5 +3,6 @@
 #Built Files.
 Tests/*.exe
 Tests/*.out
+include/*.gch
 *.exe
 *.out
