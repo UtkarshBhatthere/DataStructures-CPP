@@ -18,7 +18,7 @@ class stack
         int capacity;
     
     public:
-        stack(int required_capacity)
+        explicit stack(int required_capacity)
         {
             this -> size       = 0;
             this -> capacity   = 0;

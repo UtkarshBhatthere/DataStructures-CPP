@@ -19,7 +19,7 @@ class queue
         int capacity;
     
     public:
-        queue(int required_capacity)
+        explicit queue(int required_capacity)
         {
             this -> capacity = required_capacity;
             this -> queue_root = new T[this->capacity];

@@ -26,7 +26,7 @@ class queuell
         int capacity;
 
     public:
-        queueLL(int required_capacity)
+        explicit queueLL(int required_capacity)
         {
             this -> capacity = required_capacity;
             this -> size = 0;
