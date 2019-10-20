@@ -8,36 +8,32 @@
 #include <sstream>
 #include <iostream>
 
+typedef enum{
+    max_heap,
+    min_heap
+}heap_type;
+
+//TODO: Figure out how/when the heapify (min/max) funtions will stop.
 template <typename T>
 class heap
 {
-    enum heap_type{
-        max_heap,
-        min_heap
-    };
-
     protected:
         // Data Members
         int capacity;
         int size;
         T* root_node;
         heap_type type;
+        bool (heap<T>::*heapify)(int);
+
+        // Function Pointers.
+        //bool (*heapify)(int index);
         
         // Methods
-        int left_child(int index)
-        {
-            return 2*index+1;
-        }
+        int left_child(int index){  return 2*index+1; }
 
-        int right_child(int index)
-        {
-            return 2*index+2;
-        }
+        int right_child(int index){ return 2*index+2; }
 
-        int parent(int index)
-        {
-            return (index - 1)/2;
-        }
+        int parent(int index){  return (index - 1)/2; }
 
         bool swap(int index1, int index2)       // Constant time. O(1)
         {
@@ -97,13 +93,8 @@ class heap
             return true;
         }
 
-        void make_heap(heap_type type)       //linear time. O(n)
+        void make_heap()       //linear time. O(n)
         {
-            if(type == max_heap)
-                bool (*heapify) = this -> heapify_max;
-            else
-                bool (*heapify) = this -> heapify_min;
-
             for (int i = this -> size; i >= 0; i--){
                 this -> heapify(i);
             }    
@@ -140,6 +131,10 @@ class heap
             this -> size = 0;
             this -> type = type;
             this -> root_node = new T[this -> capacity];
+            if(type == max_heap)
+                this -> heapify = heap<T>::heapify_max;
+            else
+                this -> heapify = heap<T>::heapify_min;
         }
 
         heap(T* arr, int arr_size, heap_type type)  // Heap initialisation from array.
@@ -148,13 +143,17 @@ class heap
             this -> capacity = 3*arr_size/2;
             this -> type = type;
             this -> root_node = new T[this -> capacity];
+            if(type == max_heap)
+                this -> heapify = heap<T>::heapify_max;
+            else
+                this -> heapify = heap<T>::heapify_min;
 
             // Copying the passed array.
             for(int i = 0; i < arr_size; i++){
                 this -> root_node[i] == arr[i];
             }
 
-            this -> make_heap(type);
+            this -> make_heap();
         }
 
         ~heap(void)
@@ -171,7 +170,7 @@ class heap
         {
             if(this -> size == 0)
                 return (T)NULL;
-            return this-> root_node;
+            return *this-> root_node;
         }
 
         bool insert(T object)
@@ -187,22 +186,39 @@ class heap
 
         void remove(int index)
         {
-            int last_index = this -> size;
+            int last_index = this -> size - 1;
             this -> swap(index, last_index);
             this -> size--;
-
-            if(this -> type == max_heap)
-                bool (*heapify) = heapify_max;
-            else
-                bool (*heapify) = heapify_min;
             
-            this -> heapify(index); // Sifting down the swapped element.
+            (this ->*heapify)(index); // Sifting down the swapped element.
         }
 
-        void pop(void)
+        T pop(void)
         {
+            T ret = this -> peek();
             this -> remove(0);  // removing the index 0 element.
+            return ret;
         }
 
-        std::string flatten(void);
+        std::string flatten(void)
+        {   T* object = this -> root_node;
+            std::stringstream heap_str;
+
+            heap_str << "Heap Size : " << this ->size << std::endl;
+            heap_str << "Heap Content : " << std::endl;
+            if(this -> size == 0){
+                heap_str << "NULL" << std::endl;
+                return heap_str.str();
+            }
+
+            heap_str << "| ";
+
+            for (int i = 0; i < this -> size; i++){
+                heap_str << object[i] << " | ";
+            }
+
+            heap_str << " |";
+
+            return heap_str.str();
+        }
 };
