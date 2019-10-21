@@ -38,7 +38,7 @@ class heap
         bool swap(int index1, int index2)       // Constant time. O(1)
         {
             if(index1 == index2)
-                return true;
+                return false;
 
             if(index1 < this -> size && index2 < this -> size){
                 T temp = this -> root_node[index1];
@@ -52,23 +52,24 @@ class heap
         // Checks if the element at the given index is not the largest and then floats it down if found smaller.
         bool heapify_max(int index)     //logrithmic time. O(log(n)) Makes the given node and its children a heap (following heap invariant.)
         {
-            if(index > this -> size)
+            if(index > this -> size || this -> size <= 1)
                 return false;
 
             int left_child = this -> left_child(index);
             int right_child = this -> right_child(index);
             int largest = index;
+            T* heap_ptr = this -> root_node;
 
-            if(this -> root_node[index] < left_child && left_child < this -> size)
+            if(this -> root_node[index] < heap_ptr[left_child] && left_child < this -> size)
                 largest = left_child;
             
-            if(largest < right_child && right_child < this -> size)
+            if(heap_ptr[largest] < heap_ptr[right_child] && right_child < this -> size)
                 largest = right_child;
 
-            this -> swap(index, largest);
-
-            // Recursively float down.
-            this -> heapify_max(index);
+            if(this -> swap(index, largest) == true)
+                // Recursively float down.
+                this -> heapify_max(largest);
+            
             return true;
         }
         
@@ -200,6 +201,11 @@ class heap
             return ret;
         }
 
+        int heap_size(void)
+        {
+            return this -> size;
+        }
+
         std::string flatten(void)
         {   T* object = this -> root_node;
             std::stringstream heap_str;
@@ -211,13 +217,11 @@ class heap
                 return heap_str.str();
             }
 
-            heap_str << "| ";
+            heap_str << "|";
 
             for (int i = 0; i < this -> size; i++){
-                heap_str << object[i] << " | ";
+                heap_str << " " << object[i] << " |";
             }
-
-            heap_str << " |";
 
             return heap_str.str();
         }
