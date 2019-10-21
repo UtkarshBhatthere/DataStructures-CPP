@@ -13,7 +13,6 @@ typedef enum{
     min_heap
 }heap_type;
 
-//TODO: Figure out how/when the heapify (min/max) funtions will stop.
 template <typename T>
 class heap
 {

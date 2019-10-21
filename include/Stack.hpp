@@ -92,7 +92,7 @@ class stack
             catch(const std::exception& e)
             {
                 std::cerr << e.what() << '\n';
-                return e.what(); // TODO: Fix this, dwell more into exceptions.
+                return e.what();
             }
             
             while(object_ptr >= this->stack_root){

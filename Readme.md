@@ -21,11 +21,10 @@ DataStructures : An Open Generic Implementation of all the popular datastructure
     - [ ] Add Disjoint-Set (Union Find).
     - [ ] Test_1 Disjoint-Set.
     - [ ] Extensive testing for Disjoint-Set.
-    - [ ] Add iterator functionality to Disjoint-Set.
     -------------------------------------------------------------
     - [x] Add Heap.
-    - [ ] Test_1 Heap.
-    - [ ] Extensive testing for Heap.
+    - [x] Test_1 Heap.
+    - [x] Extensive testing for Heap.
     - [ ] Add iterator functionality to Heap.
     -------------------------------------------------------------
     - [ ] Implement custom exceptions for ds classes.

@@ -83,7 +83,7 @@ class queue
             return this -> size;
         }
 
-        std::string flatten(void)   // TODO: When dequeing to size 1 we are printng one extra char.
+        std::string flatten(void)
         {
             T* object_ptr = this -> front;
             std::stringstream queue_str;

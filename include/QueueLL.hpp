@@ -74,14 +74,12 @@ class queuell
             QueueLL out = *this -> front;
             delete this -> front;
             this -> front = out.next;
-            // TODO: The size counter is not functioning properlly.
 
             return out.data;    
         }
 
         T peek(void)
         {
-            // TODO : Fixing the size counter will fix the peek error.
             if(this -> size == 0)
                 return (T)NULL;
 
