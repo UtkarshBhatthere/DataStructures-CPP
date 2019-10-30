@@ -27,5 +27,10 @@ DataStructures : An Open Generic Implementation of all the popular datastructure
     - [x] Extensive testing for Heap.
     - [ ] Add iterator functionality to Heap.
     -------------------------------------------------------------
+    - [ ] Add BST.
+    - [ ] Test_1 BST.
+    - [ ] Extensive testing for Heap.
+    - [ ] Add iterator functionality to Heap.
+    -------------------------------------------------------------
     - [ ] Implement custom exceptions for ds classes.
     - [ ] Complete the Doc writing for resources.
