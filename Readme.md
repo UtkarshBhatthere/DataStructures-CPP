@@ -1,36 +1,14 @@
-DataStructures : An Open Generic Implementation of all the popular datastructures
+DSLite : An Open Generic Implementation of all the popular datastructures
 =================================================================================
 
-    #) TO-DO:
+With the ever present demand for the use of DataStructures such as Heaps and Trees in Application development paradigm, the process of manually writing DataStructures gets redundant and inefficient. DSLite aims to provide light weight generic Datastructures implemented in cpp for inclusion in application development for platforms such as Embedded Systems (ESP32, ARM etc).
+
+    #) Growth Status:
     -------------------------------------------------------------
-    - [x] Add STACK.
-    - [x] Tes_1 STACK.
-    - [ ] Add iterator functionality to STACK.
-    - [ ] Extensive testing for STACK.
+    - [x] STACK.
+    - [x] QUEUE.
+    - [x] QUEUE_LL (using Linked Lists).
+    - [x] HEAP.
+    - [ ] Disjoint Set (Coming Soon).
+    - [ ] BST (Coming Soon).
     -------------------------------------------------------------
-    - [x] Add QUEUE.
-    - [x] Test_1 QUEUE.
-    - [ ] Extensive testing for QUEUE.
-    - [ ] Add iterator functionality to QUEUE.
-    -------------------------------------------------------------
-    - [x] Add QUEUE_LL (Linked List).
-    - [x] Test_1 QUEUE_LL.
-    - [ ] Extensive testing for QUEUE_LL.
-    - [ ] Add iterator functionality to QUEUE_LL.
-    -------------------------------------------------------------
-    - [ ] Add Disjoint-Set (Union Find).
-    - [ ] Test_1 Disjoint-Set.
-    - [ ] Extensive testing for Disjoint-Set.
-    -------------------------------------------------------------
-    - [x] Add Heap.
-    - [x] Test_1 Heap.
-    - [x] Extensive testing for Heap.
-    - [ ] Add iterator functionality to Heap.
-    -------------------------------------------------------------
-    - [ ] Add BST.
-    - [ ] Test_1 BST.
-    - [ ] Extensive testing for Heap.
-    - [ ] Add iterator functionality to Heap.
-    -------------------------------------------------------------
-    - [ ] Implement custom exceptions for ds classes.
-    - [ ] Complete the Doc writing for resources.
